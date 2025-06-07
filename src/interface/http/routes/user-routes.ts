@@ -1,24 +1,24 @@
 import { NextFunction, Request, Response, Router } from "express";
-import multer from "multer";
+// import multer from "multer";
 import { getUserBrandDeviceOverview, getUserDigitalInterestOverview, getUserGenderOverview, getUserLocationTypeOverview, getUsers, importUserCsv } from "../controllers/user-controller";
 
-const tempUploads = multer({ dest: "temp_uploads/users" });
+// const tempUploads = multer({ dest: "temp_uploads/users" });
 
 export class UserRoutes {
   public readonly route = "/users"
 
   public setupRoutes(router: Router) {
-    router.post(
-      this.route + "/import-csv",
-      tempUploads.single("userCsv"),
-      async (req: Request, res: Response, next: NextFunction) => {
-        try {
-          await importUserCsv(req, res);
-        } catch (err) {
-          next(err);
-        }
-      }
-    );
+    // router.post(
+    //   this.route + "/import-csv",
+    //   tempUploads.single("userCsv"),
+    //   async (req: Request, res: Response, next: NextFunction) => {
+    //     try {
+    //       await importUserCsv(req, res);
+    //     } catch (err) {
+    //       next(err);
+    //     }
+    //   }
+    // );
 
     router.get(this.route,
       async (req: Request, res: Response, next: NextFunction) => {

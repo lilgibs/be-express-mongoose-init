@@ -1,7 +1,7 @@
 import { IUserProps } from "../../domain/models/user"
 import { UserMongooseRepository } from "../../infrastructure/database/repositories/user-mongoose-repository"
-import fs from "fs";
-import path from "path";
+// import fs from "fs";
+// import path from "path";
 
 export default class ImportUserCsvUseCase {
   private mongooseRepository: UserMongooseRepository
@@ -31,7 +31,7 @@ export default class ImportUserCsvUseCase {
     } catch (error) {
       throw error
     } finally {
-      fs.unlinkSync(path.join(filePath))
+      // fs.unlinkSync(path.join(filePath))
     }
   }
 }
