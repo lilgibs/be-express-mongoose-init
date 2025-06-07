@@ -8,7 +8,7 @@ export const dbConfig = {
   dbPassword: process.env["DATABASE_PASSWORD"],
   config: {
     dialect: process.env["DATABASE_DIALECT"] || "mysql",
-    port: process.env["DATABASE_PORT"] || "3306",
+    port: Number(process.env["DATABASE_PORT"]) || 3306,
     host: process.env["DATABASE_HOST"] || "localhost",
   },
 };

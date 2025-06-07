@@ -2,9 +2,10 @@ import express, { Router } from "express";
 import cors from "cors"
 import connectDB from "./infrastructure/config/db";
 import { Routes } from "./interface/http/routes";
+import { dbConfig } from "./infrastructure/config/config";
 
 const app = express()
-const port = 3000
+const port = dbConfig.config.port || 3000
 const router = Router()
 
 // middleware
@@ -21,7 +22,7 @@ app.get("/", (_req, res) => {
 
 const start = async () => {
   await connectDB(); // connect ke MongoDB
-  app.listen(port, () => {
+  app.listen(port, "0.0.0.0", () => {
     console.log(`🚀 App is running on port ${port}`);
   });
 };
