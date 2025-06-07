@@ -9,6 +9,7 @@ export default class GetUserUseCase {
   }
 
   async execute(props: { page?: number, limit?: number, q?: string }) {
-    return await this.mongooseRepository.getUsers(props)
+    const isLimitOverflow = props.limit && props.limit > 20 ? 20 : props.limit
+    return await this.mongooseRepository.getUsers({ ...props, limit: isLimitOverflow })
   }
 }
