@@ -17,7 +17,6 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.17.0",
     "mongoose": "^8.15.1",
     "multer": "^2.0.1",
     "mysql2": "^3.9.7",
@@ -27,9 +26,9 @@
     "zod": "^3.25.53"
   },
   "devDependencies": {
-    "@types/multer": "^1.4.13",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.3",
+    "@types/multer": "^1.4.13",
     "@types/node": "^20.12.7",
     "typescript": "^5.4.5"
   }
