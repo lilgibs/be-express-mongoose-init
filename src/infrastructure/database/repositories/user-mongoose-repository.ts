@@ -19,7 +19,14 @@ export class UserMongooseRepository {
     const data = await UserModel.find().skip((page - 1) * limit).limit(limit || 10).exec()
     const total = await UserModel.countDocuments();
 
-    let pagination = {
+    let pagination: {
+      currentPage: number,
+      totalPage: number,
+      totalDisplayedRows: number,
+      totalRows: number,
+      nextPage: number | null,
+      prevPage: number | null
+    } = {
       currentPage: 1,
       totalPage: 1,
       totalDisplayedRows: 0,
