@@ -87,18 +87,10 @@ GET /api/users?page=2&limit=5
     APP_PORT=your_app_port 
     ```
 4. **Install dependencies** with the command:
-    ```sh
-    npm install
-    ```
-    or
      ```sh
     yarn
     ```
 5. **Start the application** in development mode by running:
-    ```sh
-    npm run dev
-    ```
-    or
      ```sh
     yan dev
     ```
