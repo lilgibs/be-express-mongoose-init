@@ -17,29 +17,31 @@ export class UserMongooseRepository {
     const limit = props.limit || 10;
 
     const data = await UserModel.find().skip((page - 1) * limit).limit(limit || 10).exec()
-    const total = await UserModel.countDocuments();
+    const totalData = await UserModel.countDocuments();
 
     let pagination: {
-      currentPage: number,
-      totalPage: number,
+      page: number,
+      limit: number,
+      totalPages: number,
       totalDisplayedRows: number,
       totalRows: number,
       nextPage: number | null,
       prevPage: number | null
     } = {
-      currentPage: 1,
-      totalPage: 1,
+      page: 1,
+      limit: 10,
+      totalPages: 1,
       totalDisplayedRows: 0,
-      totalRows: total,
+      totalRows: totalData,
       nextPage: null,
       prevPage: null
     }
 
     if (page && limit) {
-      pagination.currentPage = page || 1;
-      pagination.totalPage = Math.ceil(total / limit);
+      pagination.page = page || 1;
+      pagination.totalPages = Math.ceil(totalData / limit);
       pagination.totalDisplayedRows = ((page - 1) * limit) + data.length;
-      pagination.nextPage = page !== pagination.totalPage ? page + 1 : null;
+      pagination.nextPage = page !== pagination.totalPages ? page + 1 : null;
       pagination.prevPage = page !== 1 ? page - 1 : null;
     }
 
