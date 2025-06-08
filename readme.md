@@ -52,6 +52,7 @@ This endpoint supports pagination to retrieve users in chunks.
 
 ```http
 GET /api/users?page=2&limit=5
+```
 
 ---
 
