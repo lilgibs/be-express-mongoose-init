@@ -16,8 +16,14 @@ export class UserMongooseRepository {
     const page = props.page || 1;
     const limit = props.limit || 10;
 
-    const data = await UserModel.find().skip((page - 1) * limit).limit(limit || 10).exec()
-    const totalData = await UserModel.countDocuments();
+    const findByName = {
+      ...(props.q && {
+        name: { $regex: new RegExp(props.q, 'i') }
+      })
+    };
+
+    const data = await UserModel.find(findByName).skip((page - 1) * limit).limit(limit || 10).exec()
+    const totalData = await UserModel.countDocuments(findByName);
 
     let pagination: {
       page: number,
